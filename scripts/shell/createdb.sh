@@ -1,10 +1,10 @@
 ######################################################################################################
-#	File         : database-create.sh
-#	Description  : This script will create a database in the local host
-#	Author	     : T S Pradeep Kumar
-#	Date		     : 11/15/2016
-# Version		   : V1.0
-# GitHub Repo  : sysgain/MarkLogic
+#	  File          : database-create.sh
+#	  Description   : This script will create a database in the local host
+#	  Author	      : T S Pradeep Kumar
+#	  Date		      : 11/15/2016
+#   Version		    : V1.0
+#   GitHub Repo   : sysgain/MarkLogic
 ######################################################################################################
 
 #!/bin/bash
