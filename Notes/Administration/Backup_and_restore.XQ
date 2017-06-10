@@ -1,6 +1,6 @@
 (:BACKUP:)
 
-xdmp:database-backup((Forest ID's),"/PATH/TO/BACKUP")
+xdmp:database-backup((Forest ID),"/PATH/TO/BACKUP")
 
 (:Example:)
 xdmp:database-backup((10),
