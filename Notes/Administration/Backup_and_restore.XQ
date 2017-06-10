@@ -6,7 +6,7 @@ xdmp:database-backup((Forest ID's),"/PATH/TO/BACKUP")
 xdmp:database-backup((10),
     "/Users/yogeshjadhav96/marklogic/backup")
     
-(: How to get Forest ID :)
+(:How to get Forest ID:)
 
 xquery version "1.0-ml";
 import module namespace admin = "http://marklogic.com/xdmp/admin"
