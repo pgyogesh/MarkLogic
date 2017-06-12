@@ -6,7 +6,12 @@ declareUpdate();
 
 if (xdmp.databaseName(xdmp.database()) == "Documents") // To check if DB is correct
 {
-  xdmp.documentAddPermissions("/uri/of/document.json", [xdmp.permission("rolename1", "read"), xdmp.permission("rolename2", "update")]);
+  xdmp.documentAddPermissions("/uri/of/document.json",
+ [
+    xdmp.permission("rolename1", "read"), 
+    xdmp.permission("rolename2", "update"),
+    \\ Add more permissions here if required
+ ]);
 }
 else 
 {
