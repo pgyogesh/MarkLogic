@@ -1,8 +1,8 @@
 ######################################################################################################
-#	File          : forest-create.sh
-#	Description   : This script will create a forest in the local host
-#	Author        : T S Pradeep Kumar
-#	Date          : 11/15/2016
+# File          : forest-create.sh
+# Description   : This script will create a forest in the local host
+# Author        : T S Pradeep Kumar
+# Date          : 11/15/2016
 # Version       : V1.0
 # GitHub Repo   : sysgain/MarkLogic
 ######################################################################################################
