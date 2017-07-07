@@ -5,17 +5,17 @@
 
 <table border="1" align="left">
   <tr>
-        <th bgcolor="#ffe2ba"> Sr. </th>
         <th bgcolor="#ffe2ba"> Username </th>
         <th bgcolor="#ffe2ba"> Description </th>
   </tr>
   {
-  for $user at $num in /sec:user
+  for $user in /sec:user
     let $username := $user/sec:user-name/text()
     let $description := $user/sec:description/text()
+    (:where $username = 'jadhavy':)
+    order by $username
     return
     <tr>
-      <td>{$num}</td>
       <td>{$username}</td>
       <td>{$description}</td>
     </tr>
