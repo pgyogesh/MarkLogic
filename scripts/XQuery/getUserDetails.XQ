@@ -1,12 +1,22 @@
 (:
   1. This script is used to get user details
   2. This script has to run against Security Database
+  3. Just choose HTML format to get result in table format
 :)
-for $user in /sec:user
+
+<table border="1">
+  <tr>
+        <th> Username </th>
+        <th> Description </th>
+  </tr>
+  {
+  for $user in /sec:user
     let $username := $user/sec:user-name/text()
     let $description := $user/sec:description/text()
-    return 
-      <user>
-        <username>{$username}</username>
-        <description>{$description}</description>
-      </user>
+    return
+    <tr>
+      <td>{$username}</td>
+      <td>{$description}</td>
+    </tr>  
+   }
+</table>
