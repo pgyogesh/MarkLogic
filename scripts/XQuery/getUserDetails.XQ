@@ -12,7 +12,7 @@
   for $user in /sec:user
     let $username := $user/sec:user-name/text()
     let $description := $user/sec:description/text()
-    (:where $username = 'jadhavy':)
+    (:where $username = 'username':)
     order by $username
     return
     <tr>
