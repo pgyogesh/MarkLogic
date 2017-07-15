@@ -14,7 +14,6 @@ parser.add_argument(
             action='store',
             help="XQuery script to run",
             required=True)
-            #metavar="FILE")
 parser.add_argument("-o", "--online",
             action="store_true",
             default=False,
