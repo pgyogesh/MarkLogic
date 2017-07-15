@@ -66,39 +66,3 @@ if options['output_filename']:
     output_path = os.path.abspath(output_file)
     with open(output_path,"w") as o_file:
         o_file.write(html)
-
-
-
-
-
-# def run_xquery(filename = xquery_script):
-#     headers = {
-#         'Content-type': 'application/x-www-form-urlencoded',
-#         'Accept': 'multipart/mixed; boundary=BOUNDARY',
-#     }
-#
-#     #script_file = open(filename)
-#     r=requests.post('http://localhost:8000/v1/eval?database=Security', headers=headers, data=filename, auth=HTTPDigestAuth('admin', 'admin'))
-#     html = r.text
-#     return html
-#
-# def writeToFile(file):
-#     #path= = os.path.abspath('UserDetails.html')
-#     #url='file://' + path
-#     #with open(path,'w') as f:
-#         file.write(run_xquery())
-#     #path = os.path.abspath('temp.html')
-#     #url='file://' + path
-#     #with open(path,'w') as f:
-#     #   f.write(html)
-#     #webbrowser.open(url)
-#
-# def openInBrowser():
-#     path = os.path.abspath('temp.html')
-#     url='file://' + path
-#     with open(path,'w') as f:
-#        f.write(html)
-#     webbrowser.open(url)
-#
-# if __name__ == '__main__':
-#
