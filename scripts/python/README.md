@@ -1,5 +1,5 @@
 # Python Scripts
-## runXQuery.py
+## 1. runXQuery.py
  * This script is to run XQuery scripts against MarkLogic Database Server.
  * This script is useful if you xquery result is in HTML format(example: ../XQuery/getUserDetails.xquery)
  * This script redirect result in file or it opens result in browser, depends on options you provide while running
