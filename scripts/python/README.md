@@ -20,6 +20,8 @@ optional arguments:
  ## 2. ml_stop.py
   * This script is to stop or restart MarkLogic Server on localhost
   * If you want to restart MarkLogic Server on all configured hosts then you need to modify the script wherever `xdml:shutdown()` and `xdmp:restart()` is used like below:
+  
+  
       ```
           xdmp:shutdown(($hostid1,hostid2),"Stopping MarkLogic Server")
           xdmp:restart(($hostid1,hostid2),"Restarting MarkLogic Server")
