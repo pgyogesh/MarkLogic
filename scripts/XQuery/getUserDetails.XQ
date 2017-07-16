@@ -1,3 +1,5 @@
+xquery=
+xquery version "1.0-ml";
 (:
   1. This script is used to get user details
   2. This script has to run against Security Database
