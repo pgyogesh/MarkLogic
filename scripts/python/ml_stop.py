@@ -28,7 +28,7 @@ def ml_stop():
             xquery version "1.0-ml";
             xdmp:shutdown((), "Shutting Down MarkLogic Server")
         """
-    requests.post('http://localhost:8000/v1/eval?database=Security', headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
+    requests.post('http://localhost:8000/v1/eval', headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
 
 def ml_restart():
     print("Restarting MarkLogic Server")
@@ -39,13 +39,17 @@ def ml_restart():
     data="""xquery=
             xquery version "1.0-ml";
             xdmp:restart((), "Shutting Down MarkLogic Server")"""
-    requests.post('http://localhost:8000/v1/eval?database=Security', headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
+    requests.post('http://localhost:8000/v1/eval', headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
 
 if __name__ == '__main__':
-    ping_ml=requests.get('http://localhost:7997')
-    if ping_ml.status_code != 200:
-        print("Looks like MarkLogic Server is not running")
+    try:
+        ping_ml=requests.get('http://localhost:7997')
+        if ping_ml.status_code == 200:
+            print("MarkLogic Server is running")
+    except  Exception:
+        print("MarkLogic Server in not running")
         sys.exit()
+
     if options.quite:
         if options.restart:
             ml_restart()
