@@ -22,4 +22,4 @@
   * [add_permission.js]https://github.com/pgyogesh/MarkLogic/blob/master/scripts/add_permission.js)
   * [create_role.js]https://github.com/pgyogesh/MarkLogic/blob/master/scripts/create_role.js)
   * [create_user.js]https://github.com/pgyogesh/MarkLogic/blob/master/scripts/create_user.js)
-  * [documentload.j)]https://github.com/pgyogesh/MarkLogic/blob/master/scripts/documentload.js)
+  * [documentload.j]https://github.com/pgyogesh/MarkLogic/blob/master/scripts/documentload.js)
