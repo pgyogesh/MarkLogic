@@ -1,7 +1,7 @@
 
 # Scripts
 
-## Pythone
+## Python
 
   * [is_ml_running.py](https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/is_ml_running.py)
   * [ml_stop.py](https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/ml_stop.py)
