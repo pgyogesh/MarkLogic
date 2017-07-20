@@ -6,7 +6,7 @@
   * [is_ml_running.py](https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/is_ml_running.py)
   * [ml_stop.py](https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/ml_stop.py)
   * [run_XQuery.py](https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/run_XQuery.py)
-  [ml_createrole.py(https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/ml_createrole.py)]
+  * [ml_createrole.py](https://github.com/pgyogesh/MarkLogic/blob/master/scripts/python/ml_createrole.py)
 
 ## XQuery
 
