@@ -4,10 +4,23 @@ import webbrowser
 import argparse
 import os
 import sys
+from string import Template
 from requests.auth import HTTPDigestAuth
 import time
 
 parser = argparse.ArgumentParser()
+
+parser.add_argument(
+            '-d',
+            '--database',
+            action='store',
+            required=True,
+            help='Specify database to run script against')
+parser.add_argument(
+            '--host',
+            default='localhost',
+            action='store',
+            help='Hostname or IP Address')
 parser.add_argument(
             "-s", "--script",
             dest="script_filename",
@@ -26,15 +39,21 @@ args = parser.parse_args()
 if len(sys.argv) == 1:
     parser.print_help()
 
-options = vars(args)
+#print("Running runXQuery.py with options" + str(args))
 
-print("Running runXQuery.py with options" + str(options))
-
-if not options['online'] and not options['output_filename']:
+if not args.online and not args.output_file:
     parser.print_help()
 
-if options['online']:
-    script = options['script_filename']
+# Link to requests.post
+host = args.host
+db = args.database
+data = Template("http://$hostname:8000/v1/eval?database=$dbname")
+link = data.substitute(hostname=host,dbname=db)
+
+
+
+if args.online:
+    script = args.script_filename
     path = os.path.abspath(script)
     with open(path) as script_data:
         headers = {
@@ -42,7 +61,7 @@ if options['online']:
             'Accept': 'multipart/mixed; boundary=BOUNDARY',
             }
             #script_file = open(filename)
-        r=requests.post('http://localhost:8000/v1/eval?database=Security', headers=headers, data=script_data, auth=HTTPDigestAuth('admin', 'admin'))
+        r=requests.post(link, headers=headers, data=script_data, auth=HTTPDigestAuth('admin', 'admin'))
         html = r.text
         html_path = '/tmp/temp.html'
         url='file://' + html_path
@@ -50,8 +69,8 @@ if options['online']:
             f.write(html)
         webbrowser.open(url)
 
-if options['output_filename']:
-    script = options['script_filename']
+if args.output_filename:
+    script = args.script_filename
     path = os.path.abspath(script)
     with open(path) as script_data:
         headers = {
@@ -59,9 +78,9 @@ if options['output_filename']:
             'Accept': 'multipart/mixed; boundary=BOUNDARY',
             }
             #script_file = open(filename)
-        r=requests.post('http://localhost:8000/v1/eval?database=Security', headers=headers, data=script_data, auth=HTTPDigestAuth('admin', 'admin'))
+        r=requests.post(link, headers=headers, data=script_data, auth=HTTPDigestAuth('admin', 'admin'))
         html = r.text
-    output_file = options['output_filename']
+    output_file = args.output_filename
     output_path = os.path.abspath(output_file)
     with open(output_path,"w") as o_file:
         o_file.write(html)
