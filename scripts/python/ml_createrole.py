@@ -7,8 +7,6 @@ import sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-r','--rolename',
-                    #dest='ROLENAME',
-                    #action='store',
                     required=True,
                     help='The name of the role to be created.'
                     )
@@ -26,13 +24,16 @@ parser.add_argument('-c','--collection',
                     default='',
                     help="The default collections for the role.")
 
+parser.add_argument('--host',
+                    default='localhost',
+                    help="Hostname or Host IP address for MarkLogic Server")
+
 args = parser.parse_args()
 if len(sys.argv) == 1:
     parser.print_help()
 
 
-data= Template("""
-    xquery=
+data= Template("""xquery=
     xquery version "1.0-ml";
     import module namespace sec="http://marklogic.com/xdmp/security" at
     "/MarkLogic/security.xqy";
@@ -42,31 +43,28 @@ data= Template("""
     $description,
     ($rolnames),
     ($permissions),
-    ($collection),
+    ($collection)
     )""")
 
 
-xquery_script=data.substitute(
+script_data=data.substitute(
                             rolname=args.rolename,
                             description=args.description,
                             rolnames=args.memberof,
                             permissions=args.permissions,
-                            collections=args.collection
+                            collection=args.collection
                             )
-print(xquery_script)
+print(script_data)
 
-# sec:create-role(
-#     "Temporary",
-#     "Temporary worker access",
-#     ("filesystem-access"),
-#     (),
-#     ("testDocument"))
-#
-#
-#
-# from string import Template
-# s = Template('$who likes $what')
-# s.substitute(who='tim', what='kung pao')
-#
-# data.substitute(rolname='yogesh',description='jadhav',rolnames='yj',permissions='perm',collection='col')
-# 'tim likes kung pao'
+headers = {
+    'Content-type': 'application/x-www-form-urlencoded',
+    'Accept': 'multipart/mixed; boundary=BOUNDARY',
+    }
+
+raw_link = Template("http://$host:8000/v1/eval?database=Security")
+hostname = args.host
+link = raw_link.substitute(host=hostname)
+
+r=requests.post(link,headers=headers, data=script_data, auth=HTTPDigestAuth('admin', 'admin'))
+print(r.status_code)
+print(r.text)
