@@ -54,7 +54,6 @@ script_data=data.substitute(
                             permissions=args.permissions,
                             collection=args.collection
                             )
-print(script_data)
 
 headers = {
     'Content-type': 'application/x-www-form-urlencoded',
