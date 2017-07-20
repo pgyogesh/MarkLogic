@@ -5,8 +5,8 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--host',
+                    default='localhost',
                     action='store',
-                    required=True,
                     help='Hostname or IP Address')
 
 args = parser.parse_args()
