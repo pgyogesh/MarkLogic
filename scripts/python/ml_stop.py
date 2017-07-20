@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from string import Template
 from requests.auth import HTTPDigestAuth
 import requests
 import argparse
@@ -8,15 +9,24 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-r',
                     '--restart',
                     default=False,
-                    action="store_true",
+                    action="store",
                     help="Restart MarkLogic Server")
 parser.add_argument('-a',
                     '--quite',
                     default=False,
                     action="store_true",
                     help="Non-Interactive Mode")
-options = parser.parse_args()
 
+parser.add_argument('--host',
+                    default='localhost',
+                    action='store',
+                    help='Hostname or IP Address')
+
+args = parser.parse_args()
+
+host = args.host
+data = Template("http://$hostname:8000/v1/eval")
+link = data.substitute(hostname=host)
 
 def ml_stop():
     print("Stopping MarkLogic Server")
@@ -28,7 +38,7 @@ def ml_stop():
             xquery version "1.0-ml";
             xdmp:shutdown((), "Shutting Down MarkLogic Server")
         """
-    requests.post('http://localhost:8000/v1/eval', headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
+    requests.post(link, headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
 
 def ml_restart():
     print("Restarting MarkLogic Server")
@@ -39,24 +49,26 @@ def ml_restart():
     data="""xquery=
             xquery version "1.0-ml";
             xdmp:restart((), "Shutting Down MarkLogic Server")"""
-    requests.post('http://localhost:8000/v1/eval', headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
+    requests.post(link, headers=headers, data=data, auth=HTTPDigestAuth('admin', 'admin'))
 
 if __name__ == '__main__':
     try:
-        ping_ml=requests.get('http://localhost:7997')
+        ping_ml_data=Template('http://$localhost:7997')
+        ping_ml_link=data.substitute(hostname=host)
+        ping_ml=requests.get(ping_ml_link)
         if ping_ml.status_code == 200:
             print("MarkLogic Server is running")
     except  Exception:
         print("MarkLogic Server in not running")
         sys.exit()
 
-    if options.quite:
-        if options.restart:
+    if args.quite:
+        if args.restart:
             ml_restart()
         else:
             ml_stop()
     else:
-        if options.restart:
+        if args.restart:
             a=input("This action will restart the MarkLogic Server. Are you sure?(Yy|Nn)")
             if a in ('Y','y'):
                 ml_restart()
