@@ -70,3 +70,19 @@ optional arguments:
   --host HOST           Hostname or Host IP address for MarkLogic Server
 
   ```
+
+## 4. is_ml_running.py
+
+  * This script is to check if MarkLogic Server is running
+  * By default it checks on localhost unless `--host` option is provided
+
+  #### Help
+
+  ```
+  $ python is_ml_running.py --help
+usage: is_ml_running.py [-h] [--host HOST]
+
+optional arguments:
+  -h, --help   show this help message and exit
+  --host HOST  Hostname or IP Address
+  ```
