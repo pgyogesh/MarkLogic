@@ -12,7 +12,6 @@ parser.add_argument('--host',
 args = parser.parse_args()
 host = args.host
 data = Template("http://$hostname:7997")
-
 link = data.substitute(hostname=host)
 try:
     ping_ml=requests.get(link)
