@@ -40,7 +40,8 @@ optional arguments:
   ```
 
 ## 3. ml_createrole.py
-  * This script is to create role in MarkLogic
+  * This script is to create role in MarkLogic.
+  * By default, This script tries to run on Marklogic installed on localhost unless `--host` option is specified
   * We have to use two quotes while running this script like below:
 
   ```
