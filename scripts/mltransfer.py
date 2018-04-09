@@ -4,7 +4,6 @@ import requests
 import optparse
 import re
 
-
 # Command line options
 parser = optparse.OptionParser()
 parser.add_option("--source-database", dest = "sourcedatabase", action = "store", help = "Specify the source database to insert the documents")
@@ -29,7 +28,7 @@ else:
 if options.destdatabase:
 	vDestDatabase = options.destdatabase
 else:
-	logging.error("source database not specified... Exiting...")
+	logging.error("destination database not specified... Exiting...")
 	sys.exit()
 
 vSourceHost = options.sourcehost
