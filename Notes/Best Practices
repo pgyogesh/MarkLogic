@@ -1,0 +1,9 @@
+1.Re-indexing
+  - Stop the journal archiving
+  - Start reindexing
+  - Take increamental backup with journal archiving
+  
+2. Updating permissions.
+  - Stop the journal archiving
+  - Start reindexing
+  - Take increamental backup with journal archiving
