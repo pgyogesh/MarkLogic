@@ -5,5 +5,5 @@
   
 2. Updating permissions.
   - Stop the journal archiving
-  - Start reindexing
+  - Update the permissions
   - Take increamental backup with journal archiving
