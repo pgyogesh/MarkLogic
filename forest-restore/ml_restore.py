@@ -12,7 +12,7 @@ logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s',level=logging
 parser = optparse.OptionParser()
 parser.add_option("--config-file", dest="configfile", action="store", help="Specify the config file")
 parser.add_option("--user", dest="username", action="store", help="Specify the username")
-parser.add_option("--password", dest="password", action="store", help="Spec")
+parser.add_option("--password", dest="password", action="store", help="Specify the user password")
 parser.add_option("--max-threads",dest="maxthreads", action="store", help="Specify maximum parallel forest restore")
 options, args = parser.parse_args()
 
