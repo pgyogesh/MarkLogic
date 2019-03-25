@@ -13,7 +13,7 @@ Options:
   --config-file=CONFIGFILE
                         Specify the config file
   --user=USERNAME       Specify the username
-  --password=PASSWORD   Spec
+  --password=PASSWORD   Specify the user password
   --max-threads=MAXTHREADS
                         Specify maximum parallel forest restore
 ```
