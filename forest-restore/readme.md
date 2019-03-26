@@ -5,15 +5,18 @@ Python script to restore Marklogic forest in parallel. This script can be used w
 ## Help
 
 ```
-Yogeshs-MacBook-Air:~ yogeshjadhav$ python ml_restore.py --help
+Yogeshs-MacBook-Air:~ yogeshjadhav$ python ml_restore_new.py --help
 Usage: ml_restore_new.py [options]
 
 Options:
   -h, --help            show this help message and exit
-  --config-file=CONFIGFILE
+  -c CONFIGFILE, --config-file=CONFIGFILE
                         Specify the config file
-  --user=USERNAME       Specify the username
-  --password=PASSWORD   Specify the user password
-  --max-threads=MAXTHREADS
+  -u USERNAME, --user=USERNAME
+                        Specify the username
+  -w PASSWORD, --password=PASSWORD
+                        Spec
+  -p MAXTHREADS, --max-threads=MAXTHREADS
                         Specify maximum parallel forest restore
+  -v, --verbose         Enable verbose logging
 ```
